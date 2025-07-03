@@ -3,6 +3,7 @@ const { Client, GatewayIntentBits, REST, Routes } = require('discord.js');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const keepAlive = require('./keep_alive');
+const fetch = require('node-fetch');
 
 const client = new Client({
   intents: [

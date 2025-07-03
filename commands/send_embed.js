@@ -12,12 +12,12 @@ module.exports = {
     .addStringOption(option =>
       option.setName('mention_type')
         .setDescription('Choose the mention type')
-        .setRequired(true))
+        .setRequired(true)
         .addChoices(
           { name: 'Everyone', value: 'Everyone' },
           { name: 'Here', value: 'Here' },
           { name: 'None', value: 'None'}
-        )
+        ))
     .addChannelOption(option =>
       option.setName('channel')
         .setDescription('Target channel')
@@ -25,9 +25,9 @@ module.exports = {
     .addStringOption(option =>
       option.setName('title')
         .setDescription('Embed title')
-        .setRequired(true)
+        .setRequired(true))
     .addStringOption(option =>
-      option.setName('colour'))
+      option.setName('colour')
           .setDescription('Embed colour')
           .setRequired(true)
           .addChoices(

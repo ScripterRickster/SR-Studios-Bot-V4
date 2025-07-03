@@ -1,16 +1,15 @@
-const express = require("express")
+const express = require("express");
+const server = express();
 
-const server = express()
-
-server.all("/",(req,res) => {
-  res.send("Web Server Is Running")
-})
-
+server.all("/", (req, res) => {
+  res.send("Web Server Is Running");
+});
 
 function keepAlive() {
-  server.listen(3000, () => {
-    console.log("Server is ready");
-  })
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    console.log(`Server is ready on port ${PORT}`);
+  });
 }
 
-module.exports = keepAlive
+module.exports = keepAlive;

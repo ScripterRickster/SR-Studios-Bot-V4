@@ -24,7 +24,7 @@ module.exports = {
     const reportChannel = interaction.guild.channels.cache.get(process.env.bugreportschannelid);
 
     const embed = new EmbedBuilder()
-      .setTitle('🐞 Bug Report')
+      .setTitle('Bug Report')
       .setDescription(`**Type:** ${type}\n**Bug:** ${bug}\n**Reported by:** ${interaction.user}\n**Time:** ${formatTimestamp()}`)
       .setColor('#FF9900');
 

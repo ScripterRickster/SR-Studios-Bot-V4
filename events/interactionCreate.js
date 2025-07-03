@@ -1,21 +1,38 @@
+
+
 module.exports = {
   name: 'interactionCreate',
   async execute(interaction, client) {
+    // Handle slash commands
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
       if (!command) return;
+
       try {
-        await command.execute(interaction);
+        await command.execute(interaction, client);
       } catch (err) {
         console.error(err);
-        await interaction.reply({
-          content: 'There was an error while executing this command.',
-          ephemeral: true,
-        });
+        await interaction.reply({ content: 'There was an error executing this command.', ephemeral: true });
+      }
+    }
+
+    if (interaction.isModalSubmit() && interaction.customId === 'robloxVerifyModal') {
+      const verifyCommand = client.commands.get('verify');
+      if (verifyCommand?.handleModal) {
+        try {
+          await verifyCommand.handleModal(interaction);
+        } catch (err) {
+          console.error('Modal Error:', err);
+          await interaction.reply({
+            content: '❌ There was an error handling the modal.',
+            ephemeral: true,
+          });
+        }
       }
     }
 
     if (interaction.isButton()) {
+      // Handle button for verify (OLD VERIFY METHOD)
       if (interaction.customId === 'verifybutton') {
         const role = interaction.guild.roles.cache.get("1023638886720745572");
         if (interaction.member.roles.cache.has(role.id)) {

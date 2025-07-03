@@ -39,7 +39,6 @@ module.exports = {
 
     try {
       const userId = await noblox.getIdFromUsername(robloxUsername);
-      const userInfo = await noblox.getUserInfo(userId); // ✅ updated method
       const code = `VERIFY-${Math.floor(Math.random() * 1000000)}`;
 
       activeVerifications.set(interaction.user.id, {
@@ -83,7 +82,6 @@ module.exports = {
       if (profileDescription.includes(session.code)) {
         activeVerifications.delete(interaction.user.id);
 
-        // You can assign roles here if needed
         await interaction.reply({
           content: `✅ Successfully linked **${session.username}** to your Discord.`,
           ephemeral: true,

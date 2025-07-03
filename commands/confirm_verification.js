@@ -1,4 +1,3 @@
-// confirm_verification.js
 const { SlashCommandBuilder } = require('discord.js');
 const verifyModule = require('./verify');
 

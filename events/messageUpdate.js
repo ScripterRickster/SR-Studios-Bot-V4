@@ -12,12 +12,14 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle('✏️ Message Edited')
+      /*
       .setAuthor({
         name: `${newMessage.author.tag} (${newMessage.author.id})`,
         iconURL: newMessage.author.displayAvatarURL(),
       })
+      */
       .setDescription(
-        `**Channel:** <#${newMessage.channelId}>\n**Old:** ${oldMessage.content}\n**New:** ${newMessage.content}`
+        `**User Profile:** <@${message.author.id}>\n**Channel:** <#${newMessage.channelId}>\n**Old:** ${oldMessage.content}\n**New:** ${newMessage.content}`
       )
       .setColor('#ffff00')
       .setFooter({ text: formatTimestamp() });

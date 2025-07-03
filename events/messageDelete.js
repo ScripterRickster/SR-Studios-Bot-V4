@@ -10,17 +10,19 @@ module.exports = {
     if (!logChannel) return;
 
     const baseEmbed = new EmbedBuilder()
+      /*
       .setAuthor({
         name: `${message.author.tag} (${message.author.id})`,
         iconURL: message.author.displayAvatarURL(),
       })
+      */
       .setFooter({ text: formatTimestamp() })
       .setColor('#ff0000');
 
     if (message.content) {
       const contentEmbed = baseEmbed
         .setTitle('🗑️ Message Deleted')
-        .setDescription(`**Channel:** <#${message.channelId}>\n**Content:** ${message.content}`);
+        .setDescription(`**User Profile:** <@${message.author.id}>\n**Channel:** <#${message.channelId}>\n**Content:** ${message.content}`);
       logChannel.send({ embeds: [contentEmbed] });
     }
 

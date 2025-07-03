@@ -6,22 +6,26 @@ module.exports = {
     .setName('send_bug_report')
     .setDescription('Report a bug to developers.')
     .addStringOption(option =>
-      option.setName('product_or_system')
-        .setDescription('The product/system with the bug.')
-        .setRequired(true))
+      option.setName('type')
+        .setDescription('Choose between Product or System')
+        .setRequired(true)
+        .addChoices(
+          { name: 'Product', value: 'Product' },
+          { name: 'System', value: 'System' }
+        ))
     .addStringOption(option =>
       option.setName('bug')
         .setDescription('Description of the bug.')
         .setRequired(true)),
 
   async execute(interaction) {
-    const system = interaction.options.getString('product_or_system');
+    const type = interaction.options.getString('type');
     const bug = interaction.options.getString('bug');
     const reportChannel = interaction.guild.channels.cache.get(process.env.bugreportschannelid);
 
     const embed = new EmbedBuilder()
       .setTitle('🐞 Bug Report')
-      .setDescription(`**System:** ${system}\n**Bug:** ${bug}\n**Reported by:** ${interaction.user}\n**Time:** ${formatTimestamp()}`)
+      .setDescription(`**Type:** ${type}\n**Bug:** ${bug}\n**Reported by:** ${interaction.user}\n**Time:** ${formatTimestamp()}`)
       .setColor('#FF9900');
 
     await reportChannel.send({ embeds: [embed] });

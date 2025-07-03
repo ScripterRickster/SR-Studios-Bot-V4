@@ -11,8 +11,13 @@ module.exports = {
         .setRequired(true))
     .addStringOption(option =>
       option.setName('mention_type')
-        .setDescription('"Everyone", "Here", or "None"')
+        .setDescription('Choose the mention type')
         .setRequired(true))
+        .addChoices(
+          { name: 'Everyone', value: 'Everyone' },
+          { name: 'Here', value: 'Here' },
+          { name: 'None', value: 'None'}
+        )
     .addChannelOption(option =>
       option.setName('channel')
         .setDescription('Target channel')
@@ -20,19 +25,35 @@ module.exports = {
     .addStringOption(option =>
       option.setName('title')
         .setDescription('Embed title')
-        .setRequired(true)),
+        .setRequired(true)
+    .addStringOption(option =>
+      option.setName('colour'))
+          .setDescription('Embed colour')
+          .setRequired(true)
+          .addChoices(
+            {name: 'Red', value: '#FF0000'},
+            {name: 'Orange', value: '#FFA500'},
+            {name: 'Yellow', value: '#FFFF00'},
+            {name: 'Green', value: '#00FF00'},
+            {name: 'Blue', value: '#0000FF'},
+            {name: 'Purple', value: '#800080'},
+            {name: 'Pink', value: '#FFC0CB'},
+            {name: 'Black', value: '#000000'},
+            {name: 'White', value: '#FFFFFF'},
+          )),
 
   async execute(interaction) {
     const msg = interaction.options.getString('message');
     const mentionType = interaction.options.getString('mention_type').toLowerCase();
     const title = interaction.options.getString('title');
+    const embedColour = interaction.options.getString('colour');
     const targetChannel = interaction.options.getChannel('channel');
     const logChannel = interaction.guild.channels.cache.get(process.env.logschannel);
 
     const embed = new EmbedBuilder()
       .setTitle(title)
       .setDescription(`**Message:** ${msg}\n**Posted by:** ${interaction.user.username}\n**Time:** ${formatTimestamp()}`)
-      .setColor('#0080FF');
+      .setColor(embedColour);
 
     let mentionText = '';
     if (mentionType === 'here') mentionText = '@here';

@@ -16,6 +16,7 @@ module.exports = {
       }
     }
 
+    // Handle modal submission - specifically for the verify command
     if (interaction.isModalSubmit() && interaction.customId === 'robloxVerifyModal') {
       const verifyCommand = client.commands.get('verify');
       if (verifyCommand?.handleModal) {

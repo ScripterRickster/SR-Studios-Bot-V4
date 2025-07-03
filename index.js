@@ -56,4 +56,12 @@ for (const file of eventFiles) {
 }
 
 keepAlive();
+
+// Self-ping to keep the bot alive (mainly for render)
+setInterval(() => {
+  fetch("https://sr-studios-bot-v4.onrender.com")
+    .then(res => console.log(`Self-ping status: ${res.status}`))
+    .catch(err => console.error("Self-ping error:", err));
+}, 1 * 60 * 1000);
+
 client.login(process.env.token);

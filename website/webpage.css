@@ -1,8 +1,22 @@
+
+
+body {
+  background-color: black;
+}
+
 h1 {
   color: #2e3d60;
   text-align: center;
 }
 
-body {
-  background-color: black;
+#sr_logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  aspect-ratio: 1/1;
+}
+
+#sr_motto {
+  color: white;
+  text-align: center;
 }

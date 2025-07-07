@@ -52,7 +52,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle(title)
-      .setDescription(`**Message:** ${msg}\n**Posted by:** ${interaction.user.username}\n**Time:** ${formatTimestamp()}`)
+      .setDescription(`**Message:** ${msg}\n**Posted by:** ${interaction.user}\n**Time:** ${formatTimestamp()}`)
       .setColor(embedColour);
 
     let mentionText = '';

@@ -1,4 +1,17 @@
+@font-face {
+  font-family: 'ChosenceB';
+  src: url('fonts/Chosence_Bold.otf') format('truetype');
+}
 
+@font-face {
+  font-family: 'ChosenceI';
+  src: url('fonts/Chosence_Regular_Italic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ChosenceBI';
+  src: url('fonts/Chosence_Bold_Italic.otf') format('truetype');
+}
 
 body {
   background-color: black;
@@ -17,6 +30,50 @@ h1 {
 }
 
 #sr_motto {
+  max-width: 73%;
+  font-family: 'ChosenceB',sans-serif;
+  margin-left: auto;
+  margin-right: auto;
   color: white;
   text-align: center;
 }
+
+#sr_motto_roman {
+  max-width: 73%;
+  font-size: 25px;
+  letter-spacing: 5px;
+  font-family: 'ChosenceI',sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f5930a;
+  text-align: center;
+}
+
+#warning_holder {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+#warning_holder span {
+  font-size: 3.5em;
+  vertical-align: middle;
+}
+
+#warning {
+  max-width: 100%;
+  font-size: 50px;
+  letter-spacing: 10px;
+  font-family: 'ChosenceI',sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  background: linear-gradient(90deg, #ff9142, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+

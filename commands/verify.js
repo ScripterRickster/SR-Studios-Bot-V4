@@ -91,7 +91,7 @@ module.exports = {
 
         const logChannel = interaction.guild.channels.cache.get(process.env.logschannel);
         //https://www.roblox.com/users/3422141408/profile
-        logChannel?.send(`🔗 <@${interaction.user.id}> verified as **[${session.username}](**(https://www.roblox.com/users/${session.userId}/profile)`);
+        logChannel?.send(`🔗 <@${interaction.user.id}> verified as **[${session.username}](https://www.roblox.com/users/${session.userId}/profile)**`);
 
         const verifiedRoleIDs = [
           1023638886720745572, // verified

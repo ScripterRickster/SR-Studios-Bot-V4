@@ -47,6 +47,8 @@ module.exports = {
         code,
       });
 
+      setTimeout(() => activeVerifications.delete(interaction.user.id), 10*60*1000); // 10 minutes
+
       const embed = new EmbedBuilder()
         .setTitle('Verification - Step 2')
         .setDescription(
@@ -88,7 +90,22 @@ module.exports = {
         });
 
         const logChannel = interaction.guild.channels.cache.get(process.env.logschannel);
-        logChannel?.send(`🔗 <@${interaction.user.id}> verified as **${session.username}** (Roblox ID: ${session.userId})`);
+        //https://www.roblox.com/users/3422141408/profile
+        logChannel?.send(`🔗 <@${interaction.user.id}> verified as **[${session.username}](**(https://www.roblox.com/users/${session.userId}/profile)`);
+
+        const verifiedRoleIDs = [
+          1023638886720745572, // verified
+          1023639177406984374, // community member
+          1024465147764408320 // dash line (---------)
+        ]
+
+        for(const roleID of verifiedRoleIDs){
+          const role = interaction.guild.roles.cache.get(roleID);
+          if(role){
+            await interaction.member.roles.add(role);
+          }
+        }
+
       } else {
         await interaction.reply({
           content: '❌ Verification code not found in your Roblox profile. Please make sure it is saved and try again.',

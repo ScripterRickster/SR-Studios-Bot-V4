@@ -99,10 +99,11 @@ module.exports = {
           1024465147764408320 // dash line (---------)
         ]
 
-        for(const roleID of verifiedRoleIDs){
+        const member = await interaction.guild.members.fetch(interaction.user.id);
+        for (const roleID of verifiedRoleIDs) {
           const role = interaction.guild.roles.cache.get(roleID);
-          if(role){
-            await interaction.member.roles.add(role);
+          if (role) {
+            await member.roles.add(role);
           }
         }
 

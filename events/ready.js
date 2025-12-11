@@ -6,7 +6,7 @@ module.exports = {
   execute(client) {
     console.log(`✅ Logged in as ${client.user.tag}`);
     client.user.setPresence({
-      activities: [{ name: `SR Studio's`, type: ActivityType.Watching }],
+      activities: [{ name: `SR Studio's | https://discord.gg/neTcS23xh7`, type: ActivityType.Watching }],
       status: 'online',
     });
   },

@@ -5,7 +5,6 @@ const {
   TextInputBuilder,
   ModalBuilder,
   TextInputStyle,
-  InteractionType,
 } = require('discord.js');
 
 const noblox = require('noblox.js');
@@ -84,11 +83,7 @@ module.exports = {
       if (profileDescription.includes(session.code)) {
         activeVerifications.delete(interaction.user.id);
 
-        await interaction.reply({
-          content: `✅ Successfully linked **${session.username}** to your Discord.`,
-          ephemeral: true,
-        });
-
+    
         const logChannel = interaction.guild.channels.cache.get(process.env.logschannel);
         //https://www.roblox.com/users/3422141408/profile
         logChannel?.send(`🔗 <@${interaction.user.id}> verified as **[${session.username}](https://www.roblox.com/users/${session.userId}/profile)**`);
@@ -106,6 +101,11 @@ module.exports = {
             await member.roles.add(role);
           }
         }
+
+        await interaction.reply({
+          content: `✅ Successfully linked **${session.username}** to your Discord.`,
+          ephemeral: true,
+        });
 
       } else {
         await interaction.reply({

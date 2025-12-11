@@ -101,7 +101,7 @@ module.exports = {
             await member.roles.add(role);
           }
         }
-
+        // moved under roles for now - double check to ensure that the bot properly gives the roles now
         await interaction.reply({
           content: `✅ Successfully linked **${session.username}** to your Discord.`,
           ephemeral: true,

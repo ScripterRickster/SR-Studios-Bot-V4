@@ -105,7 +105,7 @@ module.exports = {
         }
 
         await interaction.reply({
-          content: `✅ Successfully linked **${session.username}** to your Discord.`,
+          content: `✅ Successfully linked **[${session.username}](https://www.roblox.com/users/${session.userId}/profile)** to your Discord.`,
           ephemeral: true,
         });
 

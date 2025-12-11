@@ -96,8 +96,9 @@ module.exports = {
 
         const member = await interaction.guild.members.fetch(interaction.user.id);
         for (const roleID of verifiedRoleIDs) {
-          console.log(roleID,member);
+          console.log(roleID,member.user.id);
           const role = interaction.guild.roles.cache.get(roleID);
+          console.log(role);
           if (role) {
             await member.roles.add(role);
             console.log(`Added role ${role.name} to ${member.user.id}`);

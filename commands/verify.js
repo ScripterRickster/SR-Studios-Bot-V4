@@ -51,7 +51,7 @@ module.exports = {
       const embed = new EmbedBuilder()
         .setTitle('Verification - Step 2')
         .setDescription(
-          `✅ Found Roblox user **${robloxUsername}**.\n\n🔐 Please place this code in your **profile description**:\n\n\`${code}\`\n\nThen run **/confirm_verification** to complete verification.`
+          `✅ Found Roblox user **[${robloxUsername}](https://www.roblox.com/users/${userId}/profile)**.\n\n🔐 Please place this code in your **profile description**:\n\n\`${code}\`\n\nThen run **/confirm_verification** to complete verification.`
         )
         .setColor('#00b0f4');
 
@@ -85,23 +85,20 @@ module.exports = {
 
     
         const logChannel = interaction.guild.channels.cache.get(process.env.logschannel);
-        //https://www.roblox.com/users/3422141408/profile
         logChannel?.send(`🔗 <@${interaction.user.id}> verified as **[${session.username}](https://www.roblox.com/users/${session.userId}/profile)**`);
 
         const verifiedRoleIDs = [
-          1023638886720745572, // verified
-          1023639177406984374, // community member
-          1024465147764408320 // dash line (---------)
+          "1023638886720745572", // verified
+          "1023639177406984374", // community member
+          "1024465147764408320" // dash line (---------)
         ]
 
         const member = await interaction.guild.members.fetch(interaction.user.id);
         for (const roleID of verifiedRoleIDs) {
-          console.log(roleID,member.user.id);
           const role = interaction.guild.roles.cache.get(roleID);
-          console.log(role);
+
           if (role) {
             await member.roles.add(role);
-            console.log(`Added role ${role.name} to ${member.user.id}`);
           }
         }
 

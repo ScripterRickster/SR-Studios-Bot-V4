@@ -96,12 +96,14 @@ module.exports = {
 
         const member = await interaction.guild.members.fetch(interaction.user.id);
         for (const roleID of verifiedRoleIDs) {
+          console.log(roleID,member);
           const role = interaction.guild.roles.cache.get(roleID);
           if (role) {
             await member.roles.add(role);
+            console.log(`Added role ${role.name} to ${member.user.id}`);
           }
         }
-        // moved under roles for now - double check to ensure that the bot properly gives the roles now
+
         await interaction.reply({
           content: `✅ Successfully linked **${session.username}** to your Discord.`,
           ephemeral: true,
